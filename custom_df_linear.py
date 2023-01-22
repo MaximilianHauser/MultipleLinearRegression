@@ -6,6 +6,7 @@ Created on Fri Dec 23 18:20:35 2022
 """
 
 # import section ------------------------------------------------------------ #
+import random as rndm
 import numpy as np
 import pandas as pd
 
@@ -35,8 +36,11 @@ df = pd.DataFrame(dct)
 # calculating the dependent variable based on the independent variables ----- #
 df["Y"] = (df["X_1"] + df["X_2"] + df["C_1"] + df["C_2"] + df["I_V"]) / 5
 
+before_resid_df = df.copy()
 # adding residuals as random interference weighted by actual value ---------- #
 columns_lst = list(df.columns)
+for column in columns_lst:
+    df[column] = df[column].apply(lambda x: x * (1 + 0.01 * rndm.randint(-10,10)))
      
 # save generated table to csv-file ------------------------------------------ #
 df.to_csv(path_or_buf="lin.csv", index=False)
