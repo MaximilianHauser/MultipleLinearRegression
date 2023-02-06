@@ -25,7 +25,7 @@ corr_1 = [x - 2500 for x in x_1]
 corr_2 = [x + 2500 for x in x_2]
 
 # explaining variable that is highly heteroscedastic ------------------------ #
-inc_v = sorted([np.random.normal(loc=0, scale=1) for x in list(range(0,1000))])
+inc_v = sorted([np.random.normal(loc=0, scale=1) for x in list(range(-500,500))])
 
 # dict with values so far to convert to DataFrame --------------------------- #
 dct = {"X_1":x_1, "X_2":x_2, "D_1":decoy_1, "D_2":decoy_2, "C_1":corr_1, "C_2":corr_2, "I_V":inc_v}
